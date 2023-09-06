@@ -1,1 +1,0 @@
-# atmega32_COTS
