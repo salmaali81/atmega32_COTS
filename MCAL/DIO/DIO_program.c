@@ -15,7 +15,7 @@
 #include "DIO_private.h"
 #include "DIO_config.h"
 
-u8 DIO_u8SetPinDirection(u8 Copy_u8Port, u8 Copy_u8Pin, u8 Copy_u8Direction)
+/*u8 DIO_u8SetPinDirection(u8 Copy_u8Port, u8 Copy_u8Pin, u8 Copy_u8Direction)
 {
 	u8 Local_u8_ErrorState =0; 
 	if(Copy_u8Pin<=DIO_u8PIN7)
@@ -54,9 +54,9 @@ u8 DIO_u8SetPinDirection(u8 Copy_u8Port, u8 Copy_u8Pin, u8 Copy_u8Direction)
 		Local_u8_ErrorState =1;
 	}
 	return Local_u8_ErrorState;
-}
+}*/
 
-u8 DIO_u8SetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction)
+/*u8 DIO_u8SetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction)
 {
 	u8 Local_u8_ErrorState =0;
 	switch(Copy_u8Port)
@@ -70,7 +70,7 @@ u8 DIO_u8SetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction)
 	}
 	
 	return Local_u8_ErrorState;
-}
+}*/
 
 u8 DIO_u8SetPinValue(u8 Copy_u8Port, u8 Copy_u8Pin, u8 Copy_u8Value)
 {
@@ -149,3 +149,45 @@ u8 DIO_u8GetPinValue(u8 Copy_u8Port, u8 Copy_u8Pin, u8* Copy_pu8Value )
 	
 	return Local_u8_ErrorState;	
 } 
+
+u8 DIO_u8GetPortValue(u8 Copy_u8Port,u8* Copy_pu8Value)
+{
+	u8 Local_u8_ErrorState = 0;
+	if(Copy_pu8Value!=NULL)
+	{
+		switch(Copy_u8Port)
+		{
+			case DIO_u8PORTA: *Copy_pu8Value = PINA; break;
+			case DIO_u8PORTB: *Copy_pu8Value = PINB; break;
+			case DIO_u8PORTC: *Copy_pu8Value = PINC; break;
+			case DIO_u8PORTD: *Copy_pu8Value = PIND; break;
+			default: Local_u8_ErrorState =1;
+		}
+	}
+	else
+	{
+		Local_u8_ErrorState = 1;
+	}
+	return Local_u8_ErrorState;
+}
+
+u8 DIO_u8TogglePinValue(u8 Copy_u8Port,u8 Copy_u8Pin)
+{
+	u8 Local_u8_ErrorState = 0;
+	if(Copy_u8Pin <= DIO_u8PIN7)
+	{
+		switch(Copy_u8Port)
+		{
+			case DIO_u8PORTA: TOOGLE_BIT(PORTA,Copy_u8Pin); break;
+			case DIO_u8PORTB: TOOGLE_BIT(PORTB,Copy_u8Pin); break;
+			case DIO_u8PORTC: TOOGLE_BIT(PORTC,Copy_u8Pin); break;
+			case DIO_u8PORTD: TOOGLE_BIT(PORTD,Copy_u8Pin); break;
+			default: Local_u8_ErrorState =1;
+		}
+	}
+	else
+	{
+		Local_u8_ErrorState = 1;
+	}
+	return Local_u8_ErrorState;
+}

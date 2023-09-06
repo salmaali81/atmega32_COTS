@@ -12,7 +12,12 @@ typedef signed long int s32;
 
 typedef float f32;
 typedef double f64;
+typedef long double f80;
 
-#define NULL  0
+#define NULL  			0
+#define OK   			0
+#define NOK  			1
+
+#define NULL_POINTER	2
 
 #endif
