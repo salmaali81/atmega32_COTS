@@ -49,7 +49,7 @@ void EXTI_voidInt0Init(void)
 	/*2-Check peripheral interrupt enable initial state*/
 #if INT0_INITIAL_STATE	== ENABLED
 	SET_BIT(GICR, GICR_INT0);
-#elif INT0_INITIAL_STATE ==DISABLED
+#elif INT0_INITIAL_STATE == DISABLED
 	CLR_BIT(GICR, GICR_INT0);
 #else
 #error "Wrong INT0_INITIAL_STATE configration option"

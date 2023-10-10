@@ -20,4 +20,6 @@ typedef long double f80;
 
 #define NULL_POINTER	2
 
+#define TIMEOUT			3
+#define BUSY_FUNC		4
 #endif
